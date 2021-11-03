@@ -1,5 +1,5 @@
 {
-  "name": "ts-react-antd-typeorm-jwt",
+  "name": "ts-react-antd-typeorm-jwt-apm",
   "version": "1.0.0",
   "description": "",
   "main": "web/index.tsx",
@@ -17,6 +17,7 @@
     "@shack-js/cli": "^1.0.20",
     "antd": "^4.16.13",
     "css-loader": "^6.3.0",
+    "elastic-apm-node": "^3.23.0",
     "file-loader": "^6.2.0",
     "hash-wasm": "^4.9.0",
     "jsonwebtoken": "^8.5.1",
