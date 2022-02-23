@@ -27,7 +27,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.3.0",
-    "react-tiny-states": "^1.1.4",
+    "react-tiny-states": "^1.1.7",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",
     "typeorm": "^0.2.37"
