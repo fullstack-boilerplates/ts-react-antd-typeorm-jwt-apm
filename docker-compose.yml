@@ -38,7 +38,7 @@ services:
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:9200']
       interval: 10s
-      timeout: 5s
+      timeout: 15s
       retries: 3
 
   kibana:
@@ -74,7 +74,7 @@ services:
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:8200']
       interval: 10s
-      timeout: 10s
+      timeout: 15s
       retries: 5
 volumes:
   db-data:
