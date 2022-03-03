@@ -28,19 +28,10 @@ function useApm(app: Express) {
   if (APM_SERVER) {
     let apm = Agent.start({
       serverUrl: APM_SERVER,
+      usePathAsTransactionName: true,
     })
     apm.addSpanFilter(payload => {
       return payload.duration < 10 ? null : payload
-    })
-    app.use((req, res, next) => {
-      let { url } = req
-      let span = apm.startSpan(url, { childOf: 'url' })
-      let done = () => {
-        span.end()
-        res.off('close', done)
-      }
-      res.on('close', done)
-      next()
     })
   }
 }
