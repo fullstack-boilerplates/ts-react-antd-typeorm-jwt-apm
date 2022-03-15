@@ -13,7 +13,7 @@ services:
         condition: service_healthy
 
   db:
-    image: mysql
+    image: mysql:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=mysql
       - MYSQL_DATABASE=app
@@ -21,8 +21,9 @@ services:
       - db-data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 5s
-      retries: 10
+      timeout: 60s
+      interval: 5s
+      retries: 100
     
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1
@@ -37,9 +38,9 @@ services:
       - es:/usr/share/elasticsearch/data
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:9200']
-      interval: 10s
+      interval: 5s
       timeout: 15s
-      retries: 3
+      retries: 100
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.7.1
@@ -49,9 +50,9 @@ services:
       - 5601:5601
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:5601']
-      interval: 10s
-      timeout: 5s
-      retries: 3
+      interval: 5s
+      timeout: 60s
+      retries: 100
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -73,9 +74,9 @@ services:
         condition: service_healthy
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:8200']
-      interval: 10s
-      timeout: 15s
-      retries: 5
+      interval: 5s
+      timeout: 30s
+      retries: 100
 volumes:
   db-data:
   uploads:
